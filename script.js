@@ -7,14 +7,16 @@ codes.forEach((code, index) => {
   code.addEventListener("input", (e) => {
     e.target.value = e.target.value.slice(-1);
 
-    if (e.target.value !== "" && index < codes.length - 1) {
+    if (e.target.value && index < codes.length - 1) {
       codes[index + 1].focus();
     }
   });
 
   code.addEventListener("keydown", (e) => {
     if (e.key === "Backspace") {
-      if (code.value === "" && index > 0) {
+      code.value = "";
+
+      if (index > 0) {
         codes[index - 1].value = "";
         codes[index - 1].focus();
       }
